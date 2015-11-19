@@ -28,10 +28,7 @@ class LDAPController extends Controller {
 			$ldapbind = ldap_bind($ldapconn, $username_kemenkeu, $password) or die(' wrong credential');
 
 			if($ldapbind){
-				// search username where muhammad.azamuddin
-				// log in the user
-				// dummy
-				$user = User::where('kemenkeu', $username)->first();
+				$user = \App\User::where('kemenkeu', $username)->first();
 				\Auth::loginUsingId($user->id);
 				return \Redirect::to('/');
 			}
