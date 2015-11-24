@@ -69,4 +69,9 @@ class PenawaranController extends Controller {
 	    return "mendaftar penawaran";
 	}
 
+	public function showStats()
+	{
+
+	}
+
 }

@@ -83,4 +83,9 @@ class RencanaKarirController extends Controller {
 
 	}
 
+	public function showStats()
+	{
+
+	}
+
 }

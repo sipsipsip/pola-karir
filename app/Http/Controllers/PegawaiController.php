@@ -72,4 +72,9 @@ class PegawaiController extends Controller {
     {
         return 'showing rencana karir of '. $user_id;
     }
+
+    public function assignManajer()
+    {
+        return 'assigning manajer';
+    }
 }
