@@ -61,5 +61,26 @@ class RencanaKarirController extends Controller {
 	{
 		//
 	}
-	
+
+
+	public function addKomentar()
+	{
+
+	}
+
+	public function approve()
+	{
+
+	}
+
+	public function reject()
+	{
+
+	}
+
+	public function showKomentar()
+	{
+
+	}
+
 }

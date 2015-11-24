@@ -117,4 +117,14 @@ class RencanaKarir extends Model {
         return "change this status to approved";
     }
 
+    public function showKomentar()
+    {
+        return "showing comments of this rencana karir"
+    }
+
+    public function reject()
+    {
+        return "reject this rencana karir";
+    }
+
 }

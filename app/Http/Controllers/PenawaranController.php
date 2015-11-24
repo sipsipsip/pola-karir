@@ -62,4 +62,11 @@ class PenawaranController extends Controller {
 		//
 	}
 
+
+
+	public function mendaftar()
+	{
+	    return "mendaftar penawaran";
+	}
+
 }

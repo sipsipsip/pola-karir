@@ -62,4 +62,14 @@ class PegawaiController extends Controller {
 		//
 	}
 
+
+    public function addRencanaKarir($user_id)
+    {
+        return 'adding rencana karir';
+    }
+
+    public function showRencanaKarir($user_id)
+    {
+        return 'showing rencana karir of '. $user_id;
+    }
 }

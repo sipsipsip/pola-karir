@@ -24,3 +24,9 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+
+// Api v1
+Route::group(['prefix'=>'api/v1'], function(){
+
+    Route::get('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@showRencanaKarir']);
+});
