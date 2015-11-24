@@ -28,5 +28,13 @@ Route::controllers([
 // Api v1
 Route::group(['prefix'=>'api/v1'], function(){
 
-    Route::get('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@showRencanaKarir']);
+    Route::get('pegawai/{id}/rencana-karir/{year}', ['uses'=>'PegawaiController@showRencanaKarir']);
+    Route::post('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@addRencanaKarir']);
+    Route::get('rencana-karir/{id}', ['uses'=>'RencanaKarirController@show']);
+    Route::get('rencana-karir/{id}/komentar', ['uses'=>'RencanaKarirController@showKomentar']);
+    Route::post('rencana-karir/{id}/komentar', ['uses'=>'RencanaKarirController@addKomentar']);
+    Route::get('penawaran/{year}', ['uses'=>'PenawaranController@index']);
+    Route::post('penawaran/{id}/mendaftar', ['uses'=>'PenawaranController@mendaftar']);
+
+    Route::get('manajer/{id}/rencana-karir', ['ManajerController@showRencanaKarir']);
 });
