@@ -1,9 +1,12 @@
 <?php namespace App\Model;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class RencanaKarir extends Model {
 
+
+     protected $table = 'rencana_karir';
 
 	/*
      ** Eloquent Relationship
@@ -119,12 +122,13 @@ class RencanaKarir extends Model {
 
     public function showKomentar()
     {
-        return "showing comments of this rencana karir"
+        return "showing comments of this rencana karir";
     }
 
     public function reject()
     {
         return "reject this rencana karir";
     }
+
 
 }

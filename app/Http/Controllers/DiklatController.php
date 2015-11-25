@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Diklat;
+
 use Illuminate\Http\Request;
 
 class DiklatController extends Controller {
@@ -14,7 +16,8 @@ class DiklatController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$diklat = Diklat::all();
+		return $diklat;
 	}
 
 

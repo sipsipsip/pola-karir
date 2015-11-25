@@ -22,7 +22,8 @@ composer.phar
 
 /app/config/packages
 /public/packages
-
+/public/node_modules
+/public/src
 
 /node_modules
 

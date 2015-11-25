@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Komentar extends Model {
 
+    protected $table = 'komentar_rencana_karir';
+
 	/*
      ** Eloquent Relationship
      *

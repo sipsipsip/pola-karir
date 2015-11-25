@@ -1,0 +1,15 @@
+{
+  "name": "rencana-karir-app-for-web",
+  "version": "0.0.1",
+  "description": "Aplikasi rencana karir untuk bagian SDM Itjen - 2015",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muhammad Azamuddin",
+  "license": "ISC",
+  "dependencies": {
+    "flux": "^2.1.1",
+    "react": "^0.14.3"
+  }
+}

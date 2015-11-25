@@ -25,35 +25,50 @@ Route::controllers([
 ]);
 
 
+
+
+
+Route::get('app', ['uses'=>'AppController@home']);
+
+
+
+
+
+
+
 // Api v1
 Route::group(['prefix'=>'api/v1'], function(){
 
-    Route::get('pegawai/{id}/rencana-karir/{year}', ['uses'=>'PegawaiController@showRencanaKarir']);
-    Route::post('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@addRencanaKarir']);
-    Route::get('pegawai', ['uses'=>'PegawaiController@index']);
-    Route::post('pegawai/{id}/manajer', ['uses'=>'PegawaiController@assignManajer']);
+    Route::get('pegawai', ['uses'=>'PegawaiController@index']); //done
+    Route::get('pegawai/{id}', ['uses'=>'PegawaiController@show']); // done
+    Route::get('pegawai/{id}/rencana-karir/{year}', ['uses'=>'PegawaiController@showRencanaKarir']); // done
+    Route::post('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@addRencanaKarir']); // done
+    Route::post('pegawai/{id}/manajer', ['uses'=>'PegawaiController@assignManajer']); // done
 
 
-    Route::get('rencana-karir/{id}', ['uses'=>'RencanaKarirController@show']);
-    Route::get('rencana-karir/{id}/komentar', ['uses'=>'RencanaKarirController@showKomentar']);
-    Route::post('rencana-karir/{id}/komentar', ['uses'=>'RencanaKarirController@addKomentar']);
-    Route::post('rencana-karir/{id}/approve', ['RencanaKarirController@approve']);
-    Route::post('rencana-karir/{id}/reject', ['RencanaKarirController@reject']);
-    Route::get('rencana-karir/{year}/stats', ['uses'=>'RencanaKarirController@showStats']);
+    Route::get('rencana-karir/{id}', ['uses'=>'RencanaKarirController@show']); // done
+    Route::get('rencana-karir/{id}/komentar', ['uses'=>'RencanaKarirController@showKomentar']); // done
+    Route::post('rencana-karir/{id}/komentar', ['uses'=>'RencanaKarirController@addKomentar']); // done
+    Route::get('rencana-karir/{year}/stats', ['uses'=>'RencanaKarirController@showStats']); // last
+    Route::post('rencana-karir/{id}/approve', ['uses'=>'RencanaKarirController@approve']); // done
+    Route::post('rencana-karir/{id}/reject', ['uses'=>'RencanaKarirController@reject']); // done
 
 
-    Route::get('penawaran/{year}', ['uses'=>'PenawaranController@index']);
-    Route::post('penawaran/{id}/mendaftar', ['uses'=>'PenawaranController@mendaftar']);
-    Route::get('penawaran/{year}/stats', ['uses'=>'PenawaranController@showStats']);
-    Route::get('penawaran', ['uses'=>'PenawaranController@index']);
+    Route::get('penawaran/{year}', ['uses'=>'PenawaranController@index']); // done
+    Route::get('penawaran/{year}/stats', ['uses'=>'PenawaranController@showStats']); // last
+    Route::post('penawaran/{id}/mendaftar', ['uses'=>'PenawaranController@mendaftar']); // done
 
-    Route::get('manajer/{id}/rencana-karir/{year}', ['ManajerController@showRencanaKarir']);
 
-    Route::get('diklat', ['uses'=>'DiklatController@index']);
+    Route::get('manajer/{id}/rencana-karir/{year}', ['uses'=>'ManajerController@showRencanaKarir']); // done
 
-    Route::get('perbantuan', ['uses'=>'PerbantuanController@index']);
+    Route::get('diklat', ['uses'=>'DiklatController@index']); // done
+
+    Route::get('perbantuan', ['uses'=>'PerbantuanController@index']); // done
 
     Route::get('export-excel/rencana-karir/{year}', ['uses'=>'ExportController@rekapRencanaKarir']);
     Route::get('export-excel/penawaran/{year}', ['uses'=>'PenawaranController@rekapPenawaran']);
 
 });
+
+
+// TODO: kemarin lagi nyelesain logic di Controller. Tinggal dikit lagi. Lihat progress id file ini. (routes.php)

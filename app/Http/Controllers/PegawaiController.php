@@ -3,6 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Pegawai;
+use App\Model\RencanaKarir;
+
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller {
@@ -14,7 +17,7 @@ class PegawaiController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        return Pegawai::paginate(10, ['name','created_at']);
 	}
 
 
@@ -36,7 +39,8 @@ class PegawaiController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$pegawai = Pegawai::findOrFail($id);
+		return $pegawai;
 	}
 
 
@@ -65,16 +69,32 @@ class PegawaiController extends Controller {
 
     public function addRencanaKarir($user_id)
     {
-        return 'adding rencana karir';
+        if(!\Input::get('pendek_diklat_id'))
+        {
+            return 'empty';
+        }
+        \Eloquent::unguard();
+        $rencanaKarir = new RencanaKarir(\Input::all());
+        $rencanaKarir->save();
+        return $rencanaKarir;
     }
 
-    public function showRencanaKarir($user_id)
+    public function showRencanaKarir($user_id, $year)
     {
-        return 'showing rencana karir of '. $user_id;
+       $rencanaKarir = RencanaKarir::where('user_id', $user_id)->where('year_created', $year)->paginate(10);
+       return $rencanaKarir;
     }
 
-    public function assignManajer()
+    public function assignManajer($user_id)
     {
-        return 'assigning manajer';
+        if(!\Input::get('id_manajer'))
+        {
+            return 'empty';
+        }
+        \Eloquent::unguard();
+        $pegawai = Pegawai::findOrFail($user_id);
+        $pegawai->id_manajer = \Input::get('id_manajer');
+        $pegawai->save();
+        return $pegawai;
     }
 }

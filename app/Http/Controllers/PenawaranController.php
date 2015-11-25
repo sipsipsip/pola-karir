@@ -3,6 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Penawaran;
+use App\Model\Pegawai;
+
 use Illuminate\Http\Request;
 
 class PenawaranController extends Controller {
@@ -12,9 +15,10 @@ class PenawaranController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($year)
 	{
-		//
+		$penawaran = Penawaran::where('year_created', $year)->paginate(10);
+		return $penawaran;
 	}
 
 
@@ -64,9 +68,20 @@ class PenawaranController extends Controller {
 
 
 
-	public function mendaftar()
+	public function mendaftar($id)
 	{
-	    return "mendaftar penawaran";
+	    $penawaran = Penawaran::findOrFail($id);
+	    $user = Pegawai::findOrFail(\Input::get('user_id'));
+
+        $id_pegawai_terdaftar = $penawaran->pegawai()->getRelatedIds();
+
+        if(in_array($user->id, $id_pegawai_terdaftar))
+        {
+            return "already registered";
+        }
+
+        $penawaran->pegawai()->attach($user->id);
+        return $penawaran->pegawai;
 	}
 
 	public function showStats()

@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 class Penawaran extends Model {
 
 
+    protected $table = 'penawaran';
+
 	/*
      ** Eloquent Relationship
      *
@@ -25,19 +27,9 @@ class Penawaran extends Model {
         return $this->belongsTo('App\Model\Jabatan', 'id_jabatan');
      }
 
-
-     /*
-      ** Non Eloquent
-      *
-      */
-
-     public function stats()
+     public function pegawai()
      {
-        return "return stats here";
+        return $this->belongsToMany('App\Model\Pegawai', 'user_penawaran', 'penawaran_id', 'user_id');
      }
 
-     public function registerUser($user_id)
-     {
-        return "register user here";
-     }
-}
+    }

@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Perbantuan;
+
 use Illuminate\Http\Request;
 
 class PerbantuanController extends Controller {
@@ -14,7 +16,8 @@ class PerbantuanController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$perbantuan = Perbantuan::all();
+		return $perbantuan;
 	}
 
 

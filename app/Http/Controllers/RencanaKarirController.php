@@ -3,6 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\RencanaKarir;
+use App\Model\Komentar;
+
 use Illuminate\Http\Request;
 
 class RencanaKarirController extends Controller {
@@ -36,7 +39,8 @@ class RencanaKarirController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$rencanaKarir = RencanaKarir::findOrFail($id);
+		return $rencanaKarir;
 	}
 
 
@@ -63,24 +67,38 @@ class RencanaKarirController extends Controller {
 	}
 
 
-	public function addKomentar()
+	public function addKomentar($rencana_karir_id)
 	{
+        $rencana_karir = RencanaKarir::findOrFail($rencana_karir_id);
 
+        \Eloquent::unguard();
+        $komentar = new Komentar(\Input::all());
+        $komentar->rencanaKarir()->associate($rencana_karir);
+        $komentar->save();
+
+        return $rencana_karir;
 	}
 
-	public function approve()
+	public function approve($id)
 	{
-
+	    $rencanaKarir = RencanaKarir::findOrFail($id);
+	    $rencanaKarir->approved = 1; // 1 = approved
+	    $rencanaKarir->save();
+	    return $rencanaKarir;
 	}
 
-	public function reject()
+	public function reject($id)
 	{
-
+        $rencanaKarir = RencanaKarir::findOrFail($id);
+	    $rencanaKarir->approved = 2; // 2 = rejected
+	    $rencanaKarir->save();
+	    return $rencanaKarir;
 	}
 
-	public function showKomentar()
+	public function showKomentar($id)
 	{
-
+        $komentar = Komentar::where('rencana_karir_id', $id)->paginate(10);
+        return $komentar;
 	}
 
 	public function showStats()
