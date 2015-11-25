@@ -1,14 +1,14 @@
 @extends('app')
 
 
-@section('head')
-
-@stop
-
 @section('content')
 <div class="container">
     <div class="col-lg-12">
-        Helo world
+        <div id="react-render"></div>
     </div>
 </div>
-@stop
+@endsection
+
+@section('footer')
+    <script src="build/bundle.js"></script>
+@endsection

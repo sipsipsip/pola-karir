@@ -41,7 +41,7 @@ Route::group(['prefix'=>'api/v1'], function(){
 
     Route::get('pegawai', ['uses'=>'PegawaiController@index']); //done
     Route::get('pegawai/{id}', ['uses'=>'PegawaiController@show']); // done
-    Route::get('pegawai/{id}/rencana-karir/{year}', ['uses'=>'PegawaiController@showRencanaKarir']); // done
+    Route::get('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@showRencanaKarir']); // done
     Route::post('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@addRencanaKarir']); // done
     Route::post('pegawai/{id}/manajer', ['uses'=>'PegawaiController@assignManajer']); // done
 

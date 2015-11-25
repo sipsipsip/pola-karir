@@ -22,7 +22,7 @@ class RencanaKarir extends Model {
 
     public function diklat_jk_pendek()
     {
-        return $this->hasMany('App\Model\Diklat', 'pendek_diklat_id', 'id');
+        return $this->hasMany('App\Model\Diklat', 'id', 'pendek_diklat_id');
     }
 
     public function diklat_jk_menengah()

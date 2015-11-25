@@ -2,5 +2,16 @@
   "devDependencies": {
     "gulp": "^3.8.8",
     "laravel-elixir": "*"
+  },
+  "dependencies": {
+    "history": "^1.13.1",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "material-ui": "^0.13.4",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-router": "^1.0.0",
+    "react-tap-event-plugin": "^0.2.1",
+    "reactify": "^1.1.1"
   }
 }

@@ -79,9 +79,11 @@ class PegawaiController extends Controller {
         return $rencanaKarir;
     }
 
-    public function showRencanaKarir($user_id, $year)
+    public function showRencanaKarir($user_id)
     {
-       $rencanaKarir = RencanaKarir::where('user_id', $user_id)->where('year_created', $year)->paginate(10);
+       $rencanaKarir = RencanaKarir::with(['diklat_jk_pendek'])
+                        ->where('user_id', $user_id)
+                        ->paginate(10);
        return $rencanaKarir;
     }
 
