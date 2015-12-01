@@ -30,6 +30,12 @@ Route::controllers([
 
 Route::get('app', ['uses'=>'AppController@home']);
 
+Route::get('login_dengan_id/{id}', function($id){
+    \Auth::logout();
+    \Auth::loginUsingId($id);
+    return view('app/root');
+});
+
 
 
 
@@ -43,6 +49,7 @@ Route::group(['prefix'=>'api/v1'], function(){
     Route::get('pegawai/{id}', ['uses'=>'PegawaiController@show']); // done
     Route::get('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@showRencanaKarir']); // done
     Route::post('pegawai/{id}/rencana-karir', ['uses'=>'PegawaiController@addRencanaKarir']); // done
+    Route::post('pegawai/{id}/rencana-karir/edit', ['uses'=>'PegawaiController@editRencanaKarir']); // done
     Route::post('pegawai/{id}/manajer', ['uses'=>'PegawaiController@assignManajer']); // done
 
 
@@ -67,6 +74,14 @@ Route::group(['prefix'=>'api/v1'], function(){
 
     Route::get('export-excel/rencana-karir/{year}', ['uses'=>'ExportController@rekapRencanaKarir']);
     Route::get('export-excel/penawaran/{year}', ['uses'=>'PenawaranController@rekapPenawaran']);
+
+
+
+    Route::get('options-value/diklat', ['uses'=>'DiklatController@optionsValue']);
+    Route::get('options-value/perbantuan', ['uses'=>'PerbantuanController@optionsValue']);
+    Route::get('options-value/jabatan', ['uses'=>'JabatanController@optionsValue']);
+    Route::get('options-value/pegawai', ['uses'=>'PegawaiController@optionsValue']);
+
 
 });
 

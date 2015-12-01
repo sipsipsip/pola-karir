@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Jabatan;
+
 use Illuminate\Http\Request;
 
 class JabatanController extends Controller {
@@ -61,5 +63,11 @@ class JabatanController extends Controller {
 	{
 		//
 	}
+
+    public function optionsValue(){
+        $query = \Input::get('query');
+        $items = Jabatan::where('nama_jabatan', 'like', '%'.$query.'%')->take(10)->get();
+        return $items;
+    }
 
 }

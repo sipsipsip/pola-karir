@@ -69,12 +69,50 @@ class PegawaiController extends Controller {
 
     public function addRencanaKarir($user_id)
     {
-        if(!\Input::get('pendek_diklat_id'))
-        {
-            return 'empty';
-        }
+
         \Eloquent::unguard();
-        $rencanaKarir = new RencanaKarir(\Input::all());
+        $rencanaKarir = new RencanaKarir(\Input::except(['diklat_jk_pendek', 'diklat_jk_menengah', 'diklat_jk_panjang']));
+        $rencanaKarir->save();
+
+        foreach(\Input::get('diklat_jk_pendek') as $diklat){
+            $rencanaKarir->diklat_jk_pendek()->attach($diklat);
+        }
+
+        foreach(\Input::get('diklat_jk_menengah') as $diklat){
+            $rencanaKarir->diklat_jk_menengah()->attach($diklat);
+        }
+
+        foreach(\Input::get('diklat_jk_panjang') as $diklat){
+            $rencanaKarir->diklat_jk_panjang()->attach($diklat);
+        }
+
+
+        $rencanaKarir->save();
+        return $rencanaKarir;
+    }
+
+    public function editRencanaKarir($user_id)
+    {
+
+        \Eloquent::unguard();
+        return \Input::get('id');
+        $rencanaKarir = RencanaKarir::findOrFail(\Input::get('id'));
+        $rencanaKarir->update(\Input::except(['diklat_jk_pendek', 'diklat_jk_menengah', 'diklat_jk_panjang']));
+
+
+        foreach(\Input::get('diklat_jk_pendek') as $diklat){
+            $rencanaKarir->diklat_jk_pendek()->attach($diklat);
+        }
+
+        foreach(\Input::get('diklat_jk_menengah') as $diklat){
+            $rencanaKarir->diklat_jk_menengah()->attach($diklat);
+        }
+
+        foreach(\Input::get('diklat_jk_panjang') as $diklat){
+            $rencanaKarir->diklat_jk_panjang()->attach($diklat);
+        }
+
+
         $rencanaKarir->save();
         return $rencanaKarir;
     }
@@ -99,4 +137,11 @@ class PegawaiController extends Controller {
         $pegawai->save();
         return $pegawai;
     }
+
+    public function optionsValue(){
+        $query = \Input::get('query');
+        $items = Pegawai::where('name', 'like', '%'.$query.'%')->take(10)->get();
+        return $items;
+    }
+
 }

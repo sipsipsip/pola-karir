@@ -22,17 +22,17 @@ class RencanaKarir extends Model {
 
     public function diklat_jk_pendek()
     {
-        return $this->hasMany('App\Model\Diklat', 'id', 'pendek_diklat_id');
+        return $this->belongsToMany('App\Model\Diklat', 'diklat_rencana_karir', 'rencana_karir_id', 'diklat_id');
     }
 
     public function diklat_jk_menengah()
     {
-        return $this->hasMany('App\Model\Diklat', 'menengah_diklat_id', 'id');
+        return $this->belongsToMany('App\Model\Diklat', 'diklat_rencana_karir_menengah', 'rencana_karir_id', 'diklat_id');
     }
 
     public function diklat_jk_panjang()
     {
-        return $this->hasMany('App\Model\Diklat', 'panjang_diklat_id', 'id');
+        return $this->belongsToMany('App\Model\Diklat', 'diklat_rencana_karir_panjang', 'rencana_karir_id', 'diklat_id');
     }
 
 

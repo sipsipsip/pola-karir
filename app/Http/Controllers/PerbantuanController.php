@@ -65,4 +65,10 @@ class PerbantuanController extends Controller {
 		//
 	}
 
+    public function optionsValue(){
+        $query = \Input::get('query');
+        $items = Perbantuan::where('nama_perbantuan', 'like', '%'.$query.'%')->take(10)->get();
+        return $items;
+    }
+
 }

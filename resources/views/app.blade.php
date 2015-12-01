@@ -36,7 +36,10 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{url('/')}}">Beranda</a></li>
+					<li><a href="{{url('/app#/utama')}}">Rencana Karir</a></li>
+					<li><a href="{{url('/app#/tambah-rencana-karir')}}">Tambah</a></li>
+                    <li><a href="{{url('/app#/admin/pilih-atasan')}}">Pilih Atasan</a></li>
+                    <li><a href="{{url('/app#/manajer/rencana-karir')}}">Rencana Karir Pegawai Saya</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -60,7 +63,7 @@
 
     @yield('footer')
 	<!-- Scripts -->
-	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

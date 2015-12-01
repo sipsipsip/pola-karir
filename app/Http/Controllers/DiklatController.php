@@ -65,4 +65,11 @@ class DiklatController extends Controller {
 		//
 	}
 
+
+	public function optionsValue(){
+	    $query = \Input::get('query');
+	    $diklat = Diklat::where('nama_diklat', 'like', '%'.$query.'%')->take(10)->get();
+	    return $diklat;
+	}
+
 }

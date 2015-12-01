@@ -39,7 +39,13 @@ class RencanaKarirController extends Controller {
 	 */
 	public function show($id)
 	{
-		$rencanaKarir = RencanaKarir::findOrFail($id);
+		$rencanaKarir = RencanaKarir::with(
+		                        ['pegawai', 'diklat_jk_pendek', 'perbantuan_jk_pendek', 'jabatan_jk_pendek',
+		                         'diklat_jk_menengah', 'perbantuan_jk_menengah', 'jabatan_jk_menengah',
+		                         'diklat_jk_panjang', 'perbantuan_jk_panjang', 'jabatan_jk_panjang',
+		                         'perbantuan_jk_pendek_plan_b', 'perbantuan_jk_menengah_plan_b','perbantuan_jk_panjang_plan_b',
+		                         'jabatan_jk_pendek_plan_b', 'jabatan_jk_menengah_plan_b', 'jabatan_jk_panjang_plan_b'
+		                        ])->findOrFail($id);
 		return $rencanaKarir;
 	}
 
@@ -97,7 +103,7 @@ class RencanaKarirController extends Controller {
 
 	public function showKomentar($id)
 	{
-        $komentar = Komentar::where('rencana_karir_id', $id)->paginate(10);
+        $komentar = Komentar::with(['author'])->where('rencana_karir_id', $id)->paginate(10);
         return $komentar;
 	}
 
